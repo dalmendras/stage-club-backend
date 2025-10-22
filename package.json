@@ -1,0 +1,30 @@
+{
+  "name": "stage-club-backend",
+  "version": "1.0.0",
+  "description": "Rest Api Stage-Club con Express y TS",
+  "license": "ISC",
+  "author": "Almonlabs",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "build": "tsc ",
+    "generate-models-js": "sequelize-auto -h localhost -d stage_club -u root -x david -p 5432 --dialect postgres -o ./src/models",
+    "generate-models-ts": "sequelize-auto -h localhost -d stage_club -u root -x david -p 5432 --dialect postgres -o ./src/models  --lang ts --useDefine true --caseModel PascalCase --caseProp camelCase"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "pg": "^8.16.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.7",
+    "sequelize-typescript": "^2.1.6"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "nodemon": "^3.1.10",
+    "sequelize-auto": "^0.8.8",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}
