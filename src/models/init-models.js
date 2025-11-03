@@ -57,7 +57,7 @@ function initModels(sequelize) {
   var venues = _venues(sequelize, DataTypes);
 
   project_members.belongsTo(artist_profiles, { as: "ap", foreignKey: "ap_id"});
-  artist_profiles.hasMany(project_members, { as: "project_members", foreignKey: "ap_id"});
+  artist_profiles.hasMany(project_members, { as: "artistProjectMembers", foreignKey: "ap_id"});
   company_users.belongsTo(company, { as: "co", foreignKey: "co_id"});
   company.hasMany(company_users, { as: "company_users", foreignKey: "co_id"});
   venues.belongsTo(company, { as: "co", foreignKey: "co_id"});
@@ -101,7 +101,7 @@ function initModels(sequelize) {
   project_gender.belongsTo(musical_projects, { as: "mp", foreignKey: "mp_id"});
   musical_projects.hasMany(project_gender, { as: "project_genders", foreignKey: "mp_id"});
   project_members.belongsTo(musical_projects, { as: "mp", foreignKey: "mp_id"});
-  musical_projects.hasMany(project_members, { as: "project_members", foreignKey: "mp_id"});
+  musical_projects.hasMany(project_members, { as: "projectMembers", foreignKey: "mp_id"});
   producers_users.belongsTo(producers, { as: "pro", foreignKey: "pro_id"});
   producers.hasMany(producers_users, { as: "producers_users", foreignKey: "pro_id"});
   company_users.belongsTo(users, { as: "user", foreignKey: "user_id"});
@@ -110,6 +110,22 @@ function initModels(sequelize) {
   users.hasMany(producers_users, { as: "producers_users", foreignKey: "user_id"});
   events.belongsTo(venues, { as: "ve", foreignKey: "ve_id"});
   venues.hasMany(events, { as: "events", foreignKey: "ve_id"});
+
+  // Relaciones Many-to-Many entre artist_profiles y musical_projects
+  // a través de la tabla intermedia project_members
+  artist_profiles.belongsToMany(musical_projects, { 
+    through: project_members, 
+    foreignKey: "ap_id",
+    otherKey: "mp_id",
+    as: "musicalProjects" 
+  });
+  
+  musical_projects.belongsToMany(artist_profiles, { 
+    through: project_members, 
+    foreignKey: "mp_id", 
+    otherKey: "ap_id",
+    as: "artistMembers" 
+  });
 
   return {
     artist_profiles,

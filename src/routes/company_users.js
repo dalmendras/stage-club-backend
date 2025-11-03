@@ -3,8 +3,8 @@ const router = express.Router();
 const companyUsersController = require('../controllers/company_users');
 // const auth = require('../middleware/auth');
 
-router.get('/:id', auth, companyUsersController.getById );
-router.post('/', auth, companyUsersController.create );
-router.put('/:id', auth, companyUsersController.update );
+router.get('/:id', companyUsersController.getById );
+router.post('/', companyUsersController.create );
+router.put('/:id', companyUsersController.update );
 
 module.exports = router;

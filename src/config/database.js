@@ -29,10 +29,13 @@ async function testConnection() {
   }
 }
 
-const models = initModels(sequelize)
+const models = initModels(sequelize);
 
 module.exports = {
   sequelize,
   testConnection,
-  models
+  models,
+  Sequelize,
+  // Exportar modelos individuales para facilitar el acceso
+  ...models
 };

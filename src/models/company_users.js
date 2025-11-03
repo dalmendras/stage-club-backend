@@ -10,7 +10,8 @@ module.exports = function(sequelize, DataTypes) {
     cou_id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      primaryKey: true
     },
     co_id: {
       type: DataTypes.INTEGER,

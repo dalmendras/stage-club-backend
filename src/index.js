@@ -4,6 +4,7 @@ require('dotenv').config();
 const { testConnection } = require('./config/database');
 const { ejemplosDeUso } = require('./services/userService');
 const userRoutes = require('./routes/userRoutes');
+const routerApi = require('./routes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -25,6 +26,9 @@ app.get('/', (req, res) => {
     }
   });
 });
+
+// Api route
+routerApi(app);
 
 // Ruta para ejecutar ejemplos de Sequelize
 app.get('/api/examples', async (req, res) => {

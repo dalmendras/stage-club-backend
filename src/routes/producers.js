@@ -3,8 +3,8 @@ const router = express.Router();
 const producersController = require('../controllers/producers');
 // const auth = require('../middleware/auth');
 
-router.get('/:id', auth, producersController.getById );
-router.post('/', auth, producersController.create );
-router.put('/:id', auth, producersController.update );
+router.get('/:id', producersController.getById );
+router.post('/', producersController.create );
+router.put('/:id', producersController.update );
 
 module.exports = router;

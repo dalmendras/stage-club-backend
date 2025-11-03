@@ -3,8 +3,8 @@ const router = express.Router();
 const maInstrumentController = require('../controllers/ma_instrument');
 // const auth = require('../middleware/auth');
 
-router.get('/:id', auth, maInstrumentController.getById );
-router.post('/', auth, maInstrumentController.create );
-router.put('/:id', auth, maInstrumentController.update );
+router.get('/:id', maInstrumentController.getById );
+router.post('/', maInstrumentController.create );
+router.put('/:id', maInstrumentController.update );
 
 module.exports = router;

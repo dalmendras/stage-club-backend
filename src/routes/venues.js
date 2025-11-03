@@ -3,8 +3,8 @@ const router = express.Router();
 const venuesController = require('../controllers/venues');
 // const auth = require('../middleware/auth');
 
-router.get('/:id', auth, venuesController.getById );
-router.post('/', auth, venuesController.create );
-router.put('/:id', auth, venuesController.update );
+router.get('/:id', venuesController.getById );
+router.post('/', venuesController.create );
+router.put('/:id', venuesController.update );
 
 module.exports = router;
