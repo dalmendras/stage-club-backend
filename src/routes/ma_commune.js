@@ -4,7 +4,7 @@ const maCommuneController = require('../controllers/ma_commune');
 // const auth = require('../middleware/auth');
 
 router.get('/:id', maCommuneController.getById );
-router.post('/', maCommuneController.create );
+router.get('/', maCommuneController.get );
 router.put('/:id', maCommuneController.update );
 
 module.exports = router;
