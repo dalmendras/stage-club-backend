@@ -9,6 +9,9 @@
   "scripts": {
     "dev": "nodemon src/index.js",
     "build": "tsc ",
+    "db:seed": "node database/seed.js",
+    "db:truncate": "node database/truncate.js",
+    "db:refresh": "node database/truncate.js && node database/seed.js",
     "generate-models-js": "sequelize-auto -h localhost -d stage_club -u root -x david -p 5432 --dialect postgres -o ./src/models",
     "generate-models-ts": "sequelize-auto -h localhost -d stage_club -u root -x david -p 5432 --dialect postgres -o ./src/models  --lang ts --useDefine true --caseModel PascalCase --caseProp camelCase"
   },
